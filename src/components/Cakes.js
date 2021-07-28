@@ -1,7 +1,7 @@
 /**
  * Copyright (c) 2021 Antony Kancidrowski
  */
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -14,7 +14,7 @@ import './Cakes.css';
 
 const CakeDetails = ( props ) => {
 
-  const { show, title, text, handleClose } = props;
+  const { show, title, text, onClose } = props;
   
   return (
     <>
@@ -23,7 +23,6 @@ const CakeDetails = ( props ) => {
         aria-labelledby="contained-modal-cakedetails-vcenter"
         centered
         show={show}
-        onHide={handleClose}
         backdrop="static"
         keyboard={false}
       >
@@ -34,7 +33,7 @@ const CakeDetails = ( props ) => {
           {text}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={onClose}>
             Close
           </Button>
           <Button variant="primary">Understood</Button>
@@ -55,6 +54,8 @@ export class Cakes extends Component {
       title: 'Title',
       text: 'I will not close if you click outside me. Don\'t even try to press escape key.'
     };
+
+    this.handleClose = this.handleClose.bind(this);
   }
 
   componentDidMount() {
@@ -183,7 +184,7 @@ export class Cakes extends Component {
           </Card>
         </CardColumns>
 
-        <CakeDetails show={this.state.showdetail} title={this.state.title} text={this.state.text} handleClose={this.handleClose} />
+        <CakeDetails show={this.state.showdetail} title={this.state.title} text={this.state.text} onClose={this.handleClose} />
       </>
     );
   }
