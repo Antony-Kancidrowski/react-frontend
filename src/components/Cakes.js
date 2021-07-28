@@ -14,7 +14,7 @@ import './Cakes.css';
 
 const CakeDetails = ( props ) => {
 
-  const { show, title, text, onClose } = props;
+  const { show, cake, onClose } = props;
   
   return (
     <>
@@ -27,10 +27,15 @@ const CakeDetails = ( props ) => {
         keyboard={false}
       >
         <Modal.Header>
-          <Modal.Title>{title}</Modal.Title>
+          <Modal.Title>{cake.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {text}
+          <div>
+            <img className={'card-cake-image'} src={'http://localhost:3001/' + cake.imageUrl} alt={cake.name} />
+          </div>
+          <div>
+            {cake.comment}
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={onClose}>
@@ -52,8 +57,7 @@ export class Cakes extends Component {
     this.state = {
       cakes: [],
       showdetail: false,
-      title: 'Title',
-      text: 'I will not close if you click outside me. Don\'t even try to press escape key.'
+      cake: {}
     };
 
     this.handleClose = this.handleClose.bind(this);
@@ -98,10 +102,10 @@ export class Cakes extends Component {
 
             return (
               <Card key={index} onClick={() => {
-                  this.setState({ showdetail: true });
+                  this.setState({ cake: cake, showdetail: true });
                 }
               }>
-                <Card.Img variant="top" src="holder.js/100px160" />
+                <Card.Img className={'card-cake-image'} variant="top" src={'http://localhost:3001/' + cake.imageUrl} alt={cake.name} />
                 <Card.Body>
                   <Card.Title>{cake.name}</Card.Title>
                   <Card.Text>
@@ -114,7 +118,7 @@ export class Cakes extends Component {
 
         </CardColumns>
 
-        <CakeDetails show={this.state.showdetail} title={this.state.title} text={this.state.text} onClose={this.handleClose} />
+        <CakeDetails show={this.state.showdetail} cake={this.state.cake} onClose={this.handleClose} />
       </>
     );
   }
