@@ -31,7 +31,7 @@ const CakeDetails = ( props ) => {
         </Modal.Header>
         <Modal.Body>
           <div>
-            <img className={'card-cake-image'} src={'http://localhost:3001/' + cake.imageUrl} alt={cake.name} />
+            <img className={'cake-image'} src={'http://localhost:3001/' + cake.imageUrl} alt={cake.name} />
           </div>
           <div>
             {cake.comment}
@@ -101,7 +101,7 @@ export class Cakes extends Component {
           {this.state.cakes.map((cake, index) => {
 
             return (
-              <Card key={index} onClick={() => {
+              <Card className={'card'} key={index} onClick={() => {
                   this.setState({ cake: cake, showdetail: true });
                 }
               }>

@@ -1,6 +1,14 @@
+.card {
+  margin-top: 16px;
+}
+
 .card-cake-image {
   width: 150px;
   height: 150px;
+}
+
+.cake-image {
+  width: 100%;
 }
 
 @media only screen and (max-width: 768px) {
