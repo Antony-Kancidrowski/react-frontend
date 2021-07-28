@@ -1,4 +1,4 @@
-.card {
+.cake-card {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
@@ -12,6 +12,19 @@
 .cake-image {
   width: 100%;
 }
+
+.cake-card .header {
+  display: flex;
+}
+
+.cake-card .header .name {
+  flex-grow: 1;
+}
+
+.cake-card .header .delete {
+  flex-grow: 0;
+}
+
 
 @media only screen and (max-width: 768px) {
 

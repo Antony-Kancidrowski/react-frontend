@@ -117,22 +117,29 @@ export class Cakes extends Component {
           {this.state.cakes.map((cake, index) => {
 
             return (
-              <Card className={'card'} key={index} onClick={() => {
+              <Card className="cake-card" key={index} onClick={() => {
                   this.setState({ cake: cake, showdetail: true });
                 }
               }>
-                <Card.Header as="h5">{cake.name}</Card.Header>
-                <Card.Img className={'card-cake-image'} variant="top" src={'http://localhost:3001/' + cake.imageUrl} alt={cake.name} />
+                <Card.Header className="header" as="h5">
+                  <div className="name">
+                    {cake.name}
+                  </div>
+                  <div className="delete">
+                    <Button variant="danger" size="sm" onClick={(e) => {
+                        e.stopPropagation();
+
+                        this.handleDelete(cake);
+                      }
+                    }>Delete</Button>
+                  </div>
+                </Card.Header>
+                <Card.Img className="card-cake-image" variant="top" src={'http://localhost:3001/' + cake.imageUrl} alt={cake.name} />
                 <Card.Body>
                   <Card.Text>
                     {cake.comment}
                   </Card.Text>
-                  <Button variant="danger" size="sm" onClick={(e) => {
-                      e.stopPropagation();
-
-                      this.handleDelete(cake);
-                    }
-                  }>Delete</Button>
+                 
                 </Card.Body>
               </Card>
             );

@@ -30,6 +30,9 @@ export const CakeDetails = ( props ) => {
           <div>
             {cake.comment}
           </div>
+          <div>
+            {cake.yumFactor}
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={onClose}>
