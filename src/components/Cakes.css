@@ -1,10 +1,12 @@
 .card {
-  margin-top: 16px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .card-cake-image {
-  width: 150px;
-  height: 150px;
+  width: 15em;
+  height: 15em;
+  padding: 1em;
 }
 
 .cake-image {
@@ -14,7 +16,8 @@
 @media only screen and (max-width: 768px) {
 
   .card-cake-image {
-    width: 120px;
-    height: 120px;
+    width: 12em;
+    height: 12em;
+    padding: 0.8em;
   }
 }
