@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+/**
+ * Copyright (c) 2021 Antony Kancidrowski
+ */
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from "react";
+import { Route } from 'react-router';
+import { Layout } from './components/Layout';
+import { Cakes } from './components/Cakes';
+
+class App extends Component {
+  static displayName = App.name;
+
+  render() {
+    return (
+      <Layout>
+        <Route exact path='/' component={Cakes} />
+      </Layout>
+    );
+  }
 }
 
 export default App;
