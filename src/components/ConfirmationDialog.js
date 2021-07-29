@@ -12,6 +12,10 @@ export const ConfirmationDialog = ( props ) => {
 
   const { confirmation, open } = props;
 
+  /**
+   * 
+   * @param {*} e 
+   */
   const handleClose = (e) => {
     const target = e.currentTarget;
     confirmation.handleClose(confirmation.target, target.id === 'ok');

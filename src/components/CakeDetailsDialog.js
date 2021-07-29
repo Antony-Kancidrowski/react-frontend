@@ -6,9 +6,11 @@ import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
 
-export const CakeDetails = ( props ) => {
+import PropTypes from 'prop-types';
 
-  const { show, cake, onClose } = props;
+export const CakeDetailsDialog = ( props ) => {
+
+  const { open, cake, onClose } = props;
   
   return (
     <>
@@ -16,9 +18,9 @@ export const CakeDetails = ( props ) => {
         {...props}
         aria-labelledby="contained-modal-cakedetails-vcenter"
         centered
-        show={show}
+        show={open}
         backdrop="static"
-        keyboard={false}
+        onHide={onClose}
       >
         <Modal.Header>
           <Modal.Title>{cake.name}</Modal.Title>
@@ -43,3 +45,8 @@ export const CakeDetails = ( props ) => {
     </>
   );
 }
+
+CakeDetailsDialog.propTypes = {
+  cake: PropTypes.object.isRequired,
+  open: PropTypes.bool.isRequired
+};

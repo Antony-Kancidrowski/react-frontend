@@ -7,7 +7,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardColumns from 'react-bootstrap/CardColumns';
 
-import { CakeDetails } from './CakeDetails';
+import { CakeDetailsDialog } from './CakeDetailsDialog';
+import { CreateCakeDialog } from './CreateCakeDialog';
 import { ConfirmationDialog } from './ConfirmationDialog';
 
 import config from '../config';
@@ -22,16 +23,21 @@ export class Cakes extends Component {
 
     this.state = {
       cakes: [],
-      showdetail: false,
+      detailOpen: false,
       cake: {},
       confirmation: {},
-      confirmationOpen: false
+      confirmationOpen: false,
+      createOpen: true
     };
 
-    this.handleClose = this.handleClose.bind(this);
+    this.handleCreateClose = this.handleCreateClose.bind(this);
+    this.handleDetailClose = this.handleDetailClose.bind(this);
     this.handleConfirmationClose = this.handleConfirmationClose.bind(this);
   }
 
+  /**
+   * Read the cakes from the backend server
+   */
   componentDidMount() {
 
     const requestOptions = {
@@ -57,6 +63,11 @@ export class Cakes extends Component {
       );
   }
 
+  /**
+   * 
+   * @param {*} value 
+   * @param {*} shouldRemove 
+   */
   handleConfirmationClose = (value, shouldRemove) => {
 
     if (shouldRemove === true) {
@@ -89,6 +100,10 @@ export class Cakes extends Component {
     this.setState({ confirmationOpen: false });
   };
 
+  /**
+   * 
+   * @param {*} cake 
+   */
   handleDelete = (cake) => {
 
     this.setState({ confirmation: {
@@ -102,23 +117,32 @@ export class Cakes extends Component {
 
   };
 
-  handleClose = () => {
+  /**
+   * 
+   */
+  handleCreateClose = () => {
 
-    this.setState({ showdetail: false });
+    this.setState({ createOpen: false });
+  };
+
+  /**
+   * 
+   */
+  handleDetailClose = () => {
+
+    this.setState({ detailOpen: false });
   };
 
   render() {
     return (
       <>
-        <ConfirmationDialog confirmation={this.state.confirmation} open={this.state.confirmationOpen} />
-
         <CardColumns>
 
           {this.state.cakes.map((cake, index) => {
 
             return (
               <Card className="cake-card" key={index} onClick={() => {
-                  this.setState({ cake: cake, showdetail: true });
+                  this.setState({ cake: cake, detailOpen: true });
                 }
               }>
                 <Card.Header className="header" as="h5">
@@ -147,7 +171,10 @@ export class Cakes extends Component {
 
         </CardColumns>
 
-        <CakeDetails show={this.state.showdetail} cake={this.state.cake} onClose={this.handleClose} />
+        <CakeDetailsDialog open={this.state.detailOpen} cake={this.state.cake} onClose={this.handleDetailClose} />
+        <CreateCakeDialog open={this.state.createOpen} onClose={this.handleCreateClose} />
+        <ConfirmationDialog confirmation={this.state.confirmation} open={this.state.confirmationOpen} />
+        
       </>
     );
   }

@@ -19,6 +19,9 @@ export class NavMenu extends Component {
     };
   }
 
+  /**
+   * 
+   */
   toggleNavbar () {
     this.setState({
       collapsed: !this.state.collapsed
