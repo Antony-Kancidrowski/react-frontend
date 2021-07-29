@@ -26,11 +26,9 @@ export class Cakes extends Component {
       detailOpen: false,
       cake: {},
       confirmation: {},
-      confirmationOpen: false,
-      createOpen: true
+      confirmationOpen: false
     };
 
-    this.handleCreateClose = this.handleCreateClose.bind(this);
     this.handleDetailClose = this.handleDetailClose.bind(this);
     this.handleConfirmationClose = this.handleConfirmationClose.bind(this);
   }
@@ -39,6 +37,15 @@ export class Cakes extends Component {
    * Read the cakes from the backend server
    */
   componentDidMount() {
+
+    this.getCakes();
+    
+  }
+
+  /**
+   * 
+   */
+  getCakes = () => {
 
     const requestOptions = {
       method: "GET",
@@ -120,14 +127,6 @@ export class Cakes extends Component {
   /**
    * 
    */
-  handleCreateClose = () => {
-
-    this.setState({ createOpen: false });
-  };
-
-  /**
-   * 
-   */
   handleDetailClose = () => {
 
     this.setState({ detailOpen: false });
@@ -136,6 +135,8 @@ export class Cakes extends Component {
   render() {
     return (
       <>
+        <CreateCakeDialog onSuccess={this.getCakes} />
+
         <CardColumns>
 
           {this.state.cakes.map((cake, index) => {
@@ -172,7 +173,6 @@ export class Cakes extends Component {
         </CardColumns>
 
         <CakeDetailsDialog open={this.state.detailOpen} cake={this.state.cake} onClose={this.handleDetailClose} />
-        <CreateCakeDialog open={this.state.createOpen} onClose={this.handleCreateClose} />
         <ConfirmationDialog confirmation={this.state.confirmation} open={this.state.confirmationOpen} />
         
       </>
