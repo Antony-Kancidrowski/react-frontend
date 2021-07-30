@@ -14,7 +14,7 @@ RUN mkdir -p /etc/nginx/conf.d
 COPY ./default.conf /etc/nginx/conf.d/
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 
-ENV BACKEND=https://srv-captain--backend
+ENV BACKEND=https://backend.develop.cidrosoft.co.uk
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
