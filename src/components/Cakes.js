@@ -159,7 +159,7 @@ export class Cakes extends Component {
                     }>Delete</Button>
                   </div>
                 </Card.Header>
-                <Card.Img className="card-cake-image" variant="top" src={'http://localhost:3001/' + cake.imageUrl} alt={cake.name} />
+                <Card.Img className="card-cake-image" variant="top" src={onfig.backend.server() + '/' + cake.imageUrl} alt={cake.name} />
                 <Card.Body>
                   <Card.Text>
                     {cake.comment}

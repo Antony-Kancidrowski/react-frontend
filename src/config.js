@@ -5,5 +5,8 @@ exports.backend = {
   
   cakeApi() {
     return this.serverURL + this.apiversion + this.cake;
+  },
+  server() {
+    return this.serverURL;
   }
 };
