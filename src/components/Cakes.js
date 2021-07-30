@@ -148,7 +148,9 @@ export class Cakes extends Component {
       .then(async (data) => {
 
         if (data.status === 200) {
-          
+
+          this.getCakes();
+
           console.log("Data seeded successfully.")
         }
       })

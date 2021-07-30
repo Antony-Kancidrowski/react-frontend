@@ -1,6 +1,5 @@
 exports.backend = {
-  //serverURL: process.env.BACKEND || "http://localhost:3001",
-  serverURL: 'https://backend.develop.cidrosoft.co.uk',
+  serverURL: process.env.BACKEND || "http://localhost:3001",
   apiversion: "/api/v1.0.0",
   cake: "/cake",
   
