@@ -1,5 +1,5 @@
 exports.backend = {
-  serverURL: process.env.BACKEND || "http://localhost:3001",
+  serverURL: process.env.REACT_APP_BACKEND || "http://localhost:3001",
   apiversion: "/api/v1.0.0",
   cake: "/cake",
   
