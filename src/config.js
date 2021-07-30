@@ -1,6 +1,6 @@
 exports.backend = {
   //serverURL: process.env.BACKEND || "http://localhost:3001",
-  serverURL: 'http://srv-captain--backend',
+  serverURL: 'https://srv-captain--backend',
   apiversion: "/api/v1.0.0",
   cake: "/cake",
   
