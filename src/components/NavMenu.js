@@ -38,12 +38,10 @@ export class NavMenu extends Component {
           <Container>
             <NavbarBrand tag={Link} to="/">
               <div className="company">
-                <div>
+                <div className="logo">
                   <Image src={process.env.PUBLIC_URL + '/logo64.png'} alt={'Logo'} fluid />
                 </div>
-                <div>
-                  The Cake Emporium
-                </div>
+                <div>Emporium</div>
               </div>
             </NavbarBrand>
             <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />

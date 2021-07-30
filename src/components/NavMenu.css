@@ -21,3 +21,7 @@ html {
   display: flex;
   align-items: baseline;
 }
+
+.company .logo {
+  margin-right: 0.25em;
+}

@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardColumns from 'react-bootstrap/CardColumns';
+import Image from 'react-bootstrap/Image';
 
 import { CakeDetailsDialog } from './CakeDetailsDialog';
 import { CreateCakeDialog } from './CreateCakeDialog';
@@ -132,6 +133,30 @@ export class Cakes extends Component {
     this.setState({ detailOpen: false });
   };
 
+  /**
+   * 
+   */
+  seedData = () => {
+
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+    fetch(config.backend.cakeApi() + '/seedcakes', requestOptions)
+      .then(async (data) => {
+
+        if (data.status === 200) {
+          
+          console.log("Data seeded successfully.")
+        }
+      })
+      .catch((e) =>
+        console.log(e, "Can’t access response.")
+      );
+  }
+
   render() {
     return (
       <>
@@ -171,6 +196,12 @@ export class Cakes extends Component {
           })}
 
         </CardColumns>
+
+        {this.state.cakes.length === 0 &&
+          <div className="nocakes" onClick={() => this.seedData()}>
+            <Image src={process.env.PUBLIC_URL + '/cake.png'} alt={'Cake'} fluid />
+          </div>
+        }
 
         <CakeDetailsDialog open={this.state.detailOpen} cake={this.state.cake} onClose={this.handleDetailClose} />
         <ConfirmationDialog confirmation={this.state.confirmation} open={this.state.confirmationOpen} />
