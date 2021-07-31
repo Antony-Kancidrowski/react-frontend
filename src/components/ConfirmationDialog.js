@@ -41,9 +41,9 @@ export const ConfirmationDialog = ( props ) => {
         <Modal.Body>
           <div className="confirmation-container">
             <Image className="confirmation-cake-image" src={config.backend.server() + '/' + confirmation.cake?.imageUrl} alt={confirmation.cake?.name} fluid />
-          </div>
-          <div className="confirmation-container">
-            {confirmation.message}
+            <div className="confirmation-message">
+              {confirmation.message}
+            </div>
           </div>
         </Modal.Body>
         <Modal.Footer>

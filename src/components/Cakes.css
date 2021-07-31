@@ -46,8 +46,12 @@
 }
 
 .confirmation-cake-image {
-  width: 8em;
-  height: 8em;
+  width: 4em;
+  height: 4em;
+}
+
+.confirmation-message {
+  margin-left: 0.5em;
 }
 
 @media only screen and (max-width: 768px) {
