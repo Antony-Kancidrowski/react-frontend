@@ -2,6 +2,8 @@
  * Copyright (c) 2021 Antony Kancidrowski
  */
 
+import ReactStars from "react-rating-stars-component";
+
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
@@ -12,6 +14,10 @@ import config from '../config';
 export const CakeDetailsDialog = ( props ) => {
 
   const { open, cake, onClose } = props;
+
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
   
   return (
     <>
@@ -34,7 +40,18 @@ export const CakeDetailsDialog = ( props ) => {
             {cake.comment}
           </div>
           <div>
-            {cake.yumFactor}
+            <ReactStars
+              count={5}
+              value={cake.yumFactor}
+              onChange={ratingChanged}
+              size={24}
+              isHalf={true}
+              emptyIcon={<i className="far fa-star"></i>}
+              halfIcon={<i className="fa fa-star-half-alt"></i>}
+              fullIcon={<i className="fa fa-star"></i>}
+              activeColor="#ffd700"
+              edit={false}
+            />
           </div>
         </Modal.Body>
         <Modal.Footer>
