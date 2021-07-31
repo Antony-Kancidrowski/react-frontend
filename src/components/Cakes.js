@@ -186,9 +186,10 @@ export class Cakes extends Component {
                     }>Delete</Button>
                   </div>
                 </Card.Header>
-                <Card.Img className="card-cake-image" variant="top" src={config.backend.server() + '/' + cake.imageUrl} alt={cake.name} />
-                <Card.Body>
-                  <Card.Text>
+                
+                <Card.Body className="card-cake">
+                  <Card.Img className="card-cake-image" variant="top" src={config.backend.server() + '/' + cake.imageUrl} alt={cake.name} />
+                  <Card.Text className="card-cake-comment">
                     {cake.comment}
                   </Card.Text>
                  

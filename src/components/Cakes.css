@@ -3,10 +3,19 @@
   margin-bottom: 0.5em;
 }
 
-.card-cake-image {
-  width: 15em;
-  height: 15em;
+.card-cake {
+  display: flex;
   padding: 1em;
+}
+
+.card-cake-image {
+  width: 11em;
+  height: 11em;
+}
+
+.card-cake-comment {
+  flex-grow: 1;
+  margin-left: 0.5em;
 }
 
 .cake-image {
@@ -35,8 +44,8 @@
 @media only screen and (max-width: 768px) {
 
   .card-cake-image {
-    width: 12em;
-    height: 12em;
+    width: 8em;
+    height: 8em;
     padding: 0.8em;
   }
 }
