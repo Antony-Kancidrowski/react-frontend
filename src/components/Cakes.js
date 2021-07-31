@@ -117,7 +117,7 @@ export class Cakes extends Component {
     this.setState({ confirmation: {
       title: 'Delete Cake',
       message: 'Are you sure that you want to delete ' + cake.name + '?',
-      target: cake.cakeID,
+      cake: cake,
       ok: 'Delete',
       cancel: 'Cancel',
       handleClose: this.handleConfirmationClose

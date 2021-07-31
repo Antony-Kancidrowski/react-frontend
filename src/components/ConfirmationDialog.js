@@ -3,9 +3,14 @@
  */
 
 import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
 
 import PropTypes from 'prop-types';
+
+import config from '../config';
+
+import './Cakes.css';
 
 export const ConfirmationDialog = ( props ) => {
 
@@ -17,7 +22,7 @@ export const ConfirmationDialog = ( props ) => {
    */
   const handleClose = (e) => {
     const target = e.currentTarget;
-    confirmation.handleClose(confirmation.target, target.id === 'ok');
+    confirmation.handleClose(confirmation.cake.cakeID, target.id === 'ok');
   };
 
   return (
@@ -34,7 +39,12 @@ export const ConfirmationDialog = ( props ) => {
           <Modal.Title>{confirmation.title}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {confirmation.message}
+          <div className="confirmation-container">
+            <Image className="confirmation-cake-image" src={config.backend.server() + '/' + confirmation.cake?.imageUrl} alt={confirmation.cake?.name} fluid />
+          </div>
+          <div className="confirmation-container">
+            {confirmation.message}
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button id="cancel" variant="primary" onClick={handleClose}>

@@ -40,6 +40,15 @@
   align-content: center;
 }
 
+.confirmation-container {
+  display: flex;
+  justify-content: center;
+}
+
+.confirmation-cake-image {
+  width: 8em;
+  height: 8em;
+}
 
 @media only screen and (max-width: 768px) {
 
@@ -47,5 +56,11 @@
     width: 8em;
     height: 8em;
     padding: 0.8em;
+  }
+
+  
+  .confirmation-cake-image {
+    width: 5em;
+    height: 5em;
   }
 }
