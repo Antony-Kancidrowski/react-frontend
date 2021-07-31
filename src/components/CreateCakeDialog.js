@@ -13,11 +13,24 @@ import * as yup from 'yup';
 
 import config from '../config';
 
-const schema = yup.object().shape({
-  name: yup.string().required(),
-  comment: yup.string().required(),
-  imageUrl: yup.string().required(),
-  yumFactor: yup.number().required().min(1).max(5)
+import './CreateCakeDialog.css';
+
+const validationSchema = yup.object().shape({
+  name: yup.string()
+    .min(2, "* Names must have at least 2 characters")
+    .max(30, "* Names can't be longer than 30 characters")
+    .required("* Name is required"),
+  comment: yup.string()
+    .min(2, "* Comment must have at least 2 characters")
+    .max(200, "* Comment can't be longer than 200 characters")
+    .required("* Comment is required"),
+  imageUrl: yup.string()
+    .url("* Must enter URL in http://www.example.com format")
+    .required("* URL required"),
+  yumFactor: yup.number()
+    .min(1, "* Yum Factor must be between 1 and 5 inclusive")
+    .max(5, "* Yum Factor must be between 1 and 5 inclusive")
+    .required("* Yum Factor required"),
 });
 
 export const CreateCakeDialog = ( props ) => {
@@ -80,7 +93,7 @@ export const CreateCakeDialog = ( props ) => {
         </Modal.Header>
 
         <Formik
-            validationSchema={schema}
+            validationSchema={validationSchema}
             onSubmit={submit}
             initialValues={{
               name: '',
@@ -90,13 +103,13 @@ export const CreateCakeDialog = ( props ) => {
             }}
           >
             {({
-              handleSubmit,
+              values,
+              errors,
+              touched,
               handleChange,
               handleBlur,
-              values,
-              touched,
-              isValid,
-              errors,
+              handleSubmit,
+              isSubmitting,
             }) => (
 
             <Form noValidate onSubmit={handleSubmit}>
@@ -107,63 +120,70 @@ export const CreateCakeDialog = ( props ) => {
                   <Form.Label>Name</Form.Label>
                   <Form.Control
                     type="text"
+                    className={touched.name && errors.name ? "error" : null}
                     placeholder="Name"
                     name="name"
                     value={values.name}
+                    onBlur={handleBlur}
                     onChange={handleChange}
                     isValid={touched.name && !errors.name}
                   />
-                  <Form.Control.Feedback type="invalid">
-                    {errors.name}
-                  </Form.Control.Feedback>
+                  {touched.name && errors.name ? (
+                    <div className="error-message">{errors.name}</div>
+                  ): null}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formCakeComent">
                   <Form.Label>Comment</Form.Label>
                   <Form.Control
                     type="text"
+                    className={touched.comment && errors.comment ? "error" : null}
                     placeholder="Comment"
                     name="comment"
                     value={values.comment}
+                    onBlur={handleBlur}
                     onChange={handleChange}
                     isValid={touched.comment && !errors.comment}
                   />
-                <Form.Control.Feedback type="invalid">
-                  {errors.comment}
-                  </Form.Control.Feedback>
+                  {touched.comment && errors.comment ? (
+                    <div className="error-message">{errors.comment}</div>
+                  ): null}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formImageURL">
                   <Form.Label>Image URL</Form.Label>
                   <Form.Control
                     type="text"
+                    className={touched.imageUrl && errors.imageUrl ? "error" : null}
                     placeholder="http://www.leech-images.com/image.jpeg"
                     name="imageUrl"
                     value={values.imageUrl}
+                    onBlur={handleBlur}
                     onChange={handleChange}
                     isValid={touched.imageUrl && !errors.imageUrl}
                   />
-                  <Form.Control.Feedback type="invalid">
-                    {errors.imageUrl}
-                  </Form.Control.Feedback>
+                  {touched.imageUrl && errors.imageUrl ? (
+                    <div className="error-message">{errors.imageUrl}</div>
+                  ): null}
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formYumFactor">
                   <Form.Label>Yum Factor</Form.Label>
                   <Form.Control
-                    required
                     type="number"
+                    className={touched.yumFactor && errors.yumFactor ? "error" : null}
                     min={1}
                     max={5}
                     placeholder="5"
                     name="yumFactor"
                     value={values.yumFactor}
+                    onBlur={handleBlur}
                     onChange={handleChange}
                     isValid={touched.yumFactor && !errors.yumFactor}
                   />
-                  <Form.Control.Feedback type="invalid">
-                    {errors.yumFactor}
-                  </Form.Control.Feedback>
+                  {touched.yumFactor && errors.yumFactor ? (
+                    <div className="error-message">{errors.yumFactor}</div>
+                  ): null}
                 </Form.Group>
 
               </Modal.Body>
