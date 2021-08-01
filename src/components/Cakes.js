@@ -188,7 +188,7 @@ export class Cakes extends Component {
                 </Card.Header>
                 
                 <Card.Body className="card-cake">
-                  <Card.Img className="card-cake-image" variant="top" src={config.backend.server() + '/' + cake.imageUrl} alt={cake.name} />
+                  <Card.Img className="card-cake-image" variant="top" src={cake.imageUrl} alt={cake.name} />
                   <Card.Text className="card-cake-comment">
                     {cake.comment}
                   </Card.Text>

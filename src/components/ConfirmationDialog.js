@@ -8,8 +8,6 @@ import Modal from 'react-bootstrap/Modal';
 
 import PropTypes from 'prop-types';
 
-import config from '../config';
-
 import './Cakes.css';
 
 export const ConfirmationDialog = ( props ) => {
@@ -40,7 +38,7 @@ export const ConfirmationDialog = ( props ) => {
         </Modal.Header>
         <Modal.Body>
           <div className="confirmation-container">
-            <Image className="confirmation-cake-image" src={config.backend.server() + '/' + confirmation.cake?.imageUrl} alt={confirmation.cake?.name} fluid />
+            <Image className="confirmation-cake-image" src={confirmation.cake?.imageUrl} alt={confirmation.cake?.name} fluid />
             <div className="confirmation-message">
               {confirmation.message}
             </div>

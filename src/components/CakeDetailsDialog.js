@@ -9,7 +9,6 @@ import Image from 'react-bootstrap/Image';
 import Modal from 'react-bootstrap/Modal';
 
 import PropTypes from 'prop-types';
-import config from '../config';
 
 export const CakeDetailsDialog = ( props ) => {
 
@@ -34,7 +33,7 @@ export const CakeDetailsDialog = ( props ) => {
         </Modal.Header>
         <Modal.Body>
           <div>
-            <Image className={'cake-image'} src={config.backend.server() + '/' + cake.imageUrl} alt={cake.name} fluid />
+            <Image className={'cake-image'} src={cake.imageUrl} alt={cake.name} fluid />
           </div>
           <div>
             {cake.comment}
